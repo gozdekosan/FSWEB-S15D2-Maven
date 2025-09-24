@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import static org.hamcrest.Matchers.instanceOf;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -112,7 +114,7 @@ public class MainTest {
         Set<Task> taskSet2 = new HashSet<>();
         taskSet2.add(task2);
 
-        Set<Task> intersections = taskData.getIntersection(taskSet, taskSet2);
+        Set<Task> intersections = taskData.getIntersect(taskSet, taskSet2);
 
         for(Task task: intersections){
             assertEquals(task, task2);
@@ -130,7 +132,7 @@ public class MainTest {
         Set<Task> taskSet2 = new HashSet<>();
         taskSet2.add(task2);
 
-        Set<Task> differences = taskData.getDifferences(taskSet, taskSet2);
+        Set<Task> differences = taskData.getDifference(taskSet, taskSet2);
 
         for(Task task: differences){
             assertEquals(task, task1);
